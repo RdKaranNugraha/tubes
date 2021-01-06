@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tubes/SuratTrayek.dart';
 import 'package:tubes/login.dart';
 import 'package:tubes/stnk.dart';
 
@@ -185,7 +186,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: <Widget>[
                           RaisedButton(
-                              child: Text("Pembayaran STNK",
+                              child: Text("STNK",
                                   style: TextStyle(
                                       color: Colors.black,
                                       fontSize: 20,
@@ -198,20 +199,6 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                     MaterialPageRoute(
                                         builder: (context) => STNK()));
                               }),
-                          RaisedButton(
-                              child: Text("Info Pajak",
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold)),
-                              color: Colors.white,
-                              elevation: 5,
-                              onPressed: () {
-                                Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Login()));
-                              }),
                         ]),
                   ),
                   Container(
@@ -219,7 +206,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: <Widget>[
                           RaisedButton(
-                              child: Text("Pembayaran Surat Trayek",
+                              child: Text("Surat Trayek",
                                   style: TextStyle(
                                       color: Colors.black,
                                       fontSize: 20,
@@ -230,21 +217,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                 Navigator.pushReplacement(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Login()));
-                              }),
-                          RaisedButton(
-                              child: Text("Panduan",
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold)),
-                              color: Colors.white,
-                              elevation: 5,
-                              onPressed: () {
-                                Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Login()));
+                                        builder: (context) => SuratTrayek()));
                               }),
                         ]),
                   ),

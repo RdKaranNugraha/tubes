@@ -67,7 +67,7 @@ class _LoginState extends State<Login> {
                       },
                       keyboardType: TextInputType.phone,
                       decoration: InputDecoration(
-                          labelText: 'NIK KTP',
+                          labelText: 'NIK (Nomor Induk KTP)',
                           labelStyle: TextStyle(
                               fontFamily: 'Montserrat',
                               fontWeight: FontWeight.bold,
