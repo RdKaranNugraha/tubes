@@ -38,150 +38,82 @@ class _STNKState extends State<STNK> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    screenHeight = size.height;
-    screenWidth = size.width;
-
-    return Scaffold(
-      backgroundColor: Colors.green, //
-      body: Stack(
-        children: <Widget>[
-          menu(context),
-          stnk(context),
-        ],
-      ),
-    );
-  }
-
-  Widget menu(context) {
-    return SlideTransition(
-      position: _slideAnimation,
-      child: ScaleTransition(
-        scale: _menuScaleAnimation,
-        child: Padding(
-          padding: const EdgeInsets.only(left: 20.0),
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text("PST & STNK",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold)),
-                SizedBox(height: 10),
-                Text("Rd Karan Nugraha",
-                    style: TextStyle(color: Colors.black, fontSize: 22)),
-                SizedBox(height: 10),
-                Text("NoTelepon",
-                    style: TextStyle(color: Colors.black, fontSize: 22)),
-                SizedBox(height: 10),
-                Text("089626156656",
-                    style: TextStyle(color: Colors.black, fontSize: 22)),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget stnk(context) {
-    {
-      return AnimatedPositioned(
-        duration: duration,
-        top: 0,
-        bottom: 0,
-        left: isCollapsed ? 0 : 0.6 * screenWidth,
-        right: isCollapsed ? 0 : -0.2 * screenWidth,
-        child: ScaleTransition(
-          scale: _scaleAnimation,
-          child: Material(
-            animationDuration: duration,
-            borderRadius: BorderRadius.all(Radius.circular(40)),
-            elevation: 8,
-            color: Colors.green,
-            child: SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              physics: ClampingScrollPhysics(),
-              child: Container(
-                padding: const EdgeInsets.only(left: 16, right: 16, top: 48),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      mainAxisSize: MainAxisSize.max,
+    return new Scaffold(
+        backgroundColor: Colors.green,
+        resizeToAvoidBottomPadding: false,
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            SizedBox(height: 20.0),
+            Container(
+                height: 40.0,
+                color: Colors.transparent,
+                child: Container(
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                            color: Colors.black,
+                            style: BorderStyle.solid,
+                            width: 3.0),
+                        color: Colors.transparent,
+                        borderRadius: BorderRadius.circular(10.0)),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        InkWell(
-                          child: Icon(Icons.home, color: Colors.white),
-                          onTap: () {
-                            setState(() {
-                              if (isCollapsed)
-                                _controller.forward();
-                              else
-                                _controller.reverse();
-                              isCollapsed = !isCollapsed;
-                            });
-                          },
-                        ),
-                        Text("STNK",
-                            style:
-                                TextStyle(fontSize: 24, color: Colors.white)),
+                        Center(
+                          child: Text('Panduan',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Montserrat')),
+                        )
                       ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ),
-      );
-    }
+                    ))),
+            SizedBox(height: 20.0),
+            Container(
+                height: 40.0,
+                color: Colors.transparent,
+                child: Container(
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                            color: Colors.black,
+                            style: BorderStyle.solid,
+                            width: 3.0),
+                        color: Colors.transparent,
+                        borderRadius: BorderRadius.circular(10.0)),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Center(
+                          child: Text('Info Pajak',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Montserrat')),
+                        )
+                      ],
+                    ))),
+            SizedBox(height: 20.0),
+            Container(
+                height: 40.0,
+                color: Colors.transparent,
+                child: Container(
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                            color: Colors.black,
+                            style: BorderStyle.solid,
+                            width: 3.0),
+                        color: Colors.transparent,
+                        borderRadius: BorderRadius.circular(10.0)),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Center(
+                          child: Text('Pembayaran Pajak',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Montserrat')),
+                        )
+                      ],
+                    )))
+          ],
+        ));
   }
 }
-
-// create appBar
-// appBar: new AppBar(
-//   backgroundColor: Colors.lightGreen,
-//   leading: new Icon(Icons.menu),
-//   title: new Text("STNK"),
-//         bottom: new TabBar(
-//           controller: controller,
-//           //source code lanjutan
-//           tabs: <Widget>[
-//             new Tab(
-//               icon: new Icon(Icons.verified_outlined),
-//               text: "Info Pajak",
-//             ),
-//             new Tab(
-//               icon: new Icon(Icons.feedback),
-//               text: "Pembayaran",
-//             ),
-//             new Tab(
-//               icon: new Icon(Icons.info_outlined),
-//               text: "Bukti Pembayaran",
-//             ),
-//             new Tab(
-//               icon: new Icon(Icons.book),
-//               text: "Panduan",
-//             ),
-//           ],
-//         ),
-//       ),
-//       body: new TabBarView(
-//         //controller untuk tab bar
-//         controller: controller,
-//         children: <Widget>[
-//           new pendaftaran.Pendaftaran(),
-//           new pengaduan.Pengaduan(),
-//           new infopajak.Infopajak(),
-//           new panduan.Panduan(),
-//         ],
-//       ),
-//     );
-//   }
-// }

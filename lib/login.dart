@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:tubes/home.dart';
+import 'package:tubes/pendaftaran.dart';
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
       debugShowCheckedModeBanner: false,
-      // routes: <String, WidgetBuilder>{
-      //   '/signup': (BuildContext context) => new Signup()
-      // },
+      routes: <String, WidgetBuilder>{
+        '/pendaftaran': (BuildContext context) => new Pendaftaran()
+      },
       home: new Login(),
     );
   }
@@ -93,29 +94,39 @@ class _LoginState extends State<Login> {
                     ),
                     SizedBox(height: 20.0),
                     Container(
-                        child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        RaisedButton(
-                            child: Text('Login',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontFamily: 'Montserrat')),
-                            color: Colors.green,
-                            onPressed: () {
-                              if (text1.text == "089626156656" &&
-                                  text2.text == "kelompok12") {
-                                Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Home()));
-                              } else {
-                                print(
-                                    "NoTelepon atau Password salah/belum terdaftar");
-                              }
-                            })
-                      ],
-                    )),
+                        height: 40.0,
+                        color: Colors.transparent,
+                        child: Container(
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                                    color: Colors.transparent,
+                                    style: BorderStyle.solid,
+                                    width: 1.0),
+                                color: Colors.transparent,
+                                borderRadius: BorderRadius.circular(20.0)),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                RaisedButton(
+                                    child: Text('LOGIN',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontFamily: 'Montserrat')),
+                                    color: Colors.white,
+                                    onPressed: () {
+                                      if (text1.text == "089626156656" &&
+                                          text2.text == "kelompok12") {
+                                        Navigator.pushReplacement(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) => Home()));
+                                      } else {
+                                        print(
+                                            "NoTelepon atau Password salah/belum terdaftar");
+                                      }
+                                    })
+                              ],
+                            ))),
                     SizedBox(height: 20.0),
                     Container(
                         height: 40.0,
@@ -130,13 +141,13 @@ class _LoginState extends State<Login> {
                                 borderRadius: BorderRadius.circular(20.0)),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                // Center(
-                                //   child: ImageIcon(
-                                //       AssetImage('assets/facebook.png')),
-                                // ),
+                              children: <Widget>[  
                                 Center(
-                                  child: Text('Login With Facebook',
+                                  child: ImageIcon(
+                                      AssetImage('assets/images/facebook.png')),
+                                ),
+                                Center(
+                                  child: Text('LOGIN WITH FACEBOOK',
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontFamily: 'Montserrat')),
@@ -153,10 +164,9 @@ class _LoginState extends State<Login> {
                   'New Konsumen?',
                   style: TextStyle(fontFamily: 'Montserrat'),
                 ),
-                SizedBox(width: 5.0),
-                InkWell(
+                GestureDetector(
                   onTap: () {
-                    Navigator.of(context).pushNamed('/signup');
+                    // Get.to(Pendaftaran());
                   },
                   child: Text(
                     'Register',
