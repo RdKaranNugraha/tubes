@@ -3,7 +3,7 @@ import 'package:tubes/SuratTrayek.dart';
 import 'package:tubes/login.dart';
 import 'package:tubes/stnk.dart';
 
-class Home extends StatefulWidget {
+class Home extends StatefulWidget { 
   @override
   _HomeState createState() => _HomeState();
 }

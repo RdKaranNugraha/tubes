@@ -91,41 +91,58 @@ class _LoginState extends State<Login> {
                               borderSide: BorderSide(color: Colors.white))),
                       obscureText: true,
                     ),
-                    SizedBox(height: 5.0),
+                    SizedBox(height: 20.0),
                     Container(
-                      alignment: Alignment(1.0, 0.0),
-                      padding: EdgeInsets.only(top: 15.0, left: 20.0),
-                      child: InkWell(
-                        child: Text(
-                          'Forgot Password',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Montserrat',
-                              decoration: TextDecoration.underline),
-                        ),
-                      ),
-                    ),
-                    RaisedButton(
-                        child: Text("LOGIN",
-                            style: TextStyle(
-                                color: Colors.green,
-                                fontSize: 25,
-                                fontWeight: FontWeight.bold)),
-                        color: Colors.black,
-                        elevation: 5,
-                        onPressed: () {
-                          if (text1.text == "089626156656" &&
-                              text2.text == "kelompok12") {
-                            Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Home()));
-                          } else {
-                            print(
-                                "NoTelepon atau Password salah/belum terdaftar");
-                          }
-                        })
+                        child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        RaisedButton(
+                            child: Text('Login',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'Montserrat')),
+                            color: Colors.green,
+                            onPressed: () {
+                              if (text1.text == "089626156656" &&
+                                  text2.text == "kelompok12") {
+                                Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Home()));
+                              } else {
+                                print(
+                                    "NoTelepon atau Password salah/belum terdaftar");
+                              }
+                            })
+                      ],
+                    )),
+                    SizedBox(height: 20.0),
+                    Container(
+                        height: 40.0,
+                        color: Colors.transparent,
+                        child: Container(
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                                    color: Colors.black,
+                                    style: BorderStyle.solid,
+                                    width: 1.0),
+                                color: Colors.transparent,
+                                borderRadius: BorderRadius.circular(20.0)),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                // Center(
+                                //   child: ImageIcon(
+                                //       AssetImage('assets/facebook.png')),
+                                // ),
+                                Center(
+                                  child: Text('Login With Facebook',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontFamily: 'Montserrat')),
+                                )
+                              ],
+                            )))
                   ],
                 )),
             SizedBox(height: 15.0),
@@ -149,11 +166,10 @@ class _LoginState extends State<Login> {
                         fontWeight: FontWeight.bold,
                         decoration: TextDecoration.underline),
                   ),
-                )
+                ),
               ],
             ),
           ],
         ));
   }
 }
-
