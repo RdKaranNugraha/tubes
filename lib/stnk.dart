@@ -39,6 +39,10 @@ class _STNKState extends State<STNK> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.green,
+          title: Text("Panduan"),
+        ),
         backgroundColor: Colors.green,
         resizeToAvoidBottomPadding: false,
         body: Column(
@@ -60,10 +64,51 @@ class _STNKState extends State<STNK> with SingleTickerProviderStateMixin {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Center(
+                            child: RaisedButton(
                           child: Text('Panduan',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontFamily: 'Montserrat')),
+                          color: Colors.green,
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => panduan.Panduan()));
+                          },
+                        )
+                        )
+                      ],
+                    ))),
+            SizedBox(height: 20.0),
+            Container(
+                height: 40.0,
+                color: Colors.transparent,
+                child: Container(
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                            color: Colors.black,
+                            style: BorderStyle.solid,
+                            width: 3.0),
+                        color: Colors.transparent,
+                        borderRadius: BorderRadius.circular(10.0)),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Center(
+                          child: RaisedButton(
+                          child: Text('Pendaftaran Perpanjangan STNK',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Montserrat')),
+                          color: Colors.green,
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => panduan.Panduan()));
+                          },
+                        )
                         )
                       ],
                     ))),

@@ -141,7 +141,7 @@ class _LoginState extends State<Login> {
                                 borderRadius: BorderRadius.circular(20.0)),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[  
+                              children: <Widget>[
                                 Center(
                                   child: ImageIcon(
                                       AssetImage('assets/images/facebook.png')),
@@ -166,7 +166,9 @@ class _LoginState extends State<Login> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    // Get.to(Pendaftaran());
+                    Navigator.push(context,  
+                    MaterialPageRoute(
+                    builder: (context) => Pendaftaran()));
                   },
                   child: Text(
                     'Register',

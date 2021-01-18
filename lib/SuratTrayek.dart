@@ -39,6 +39,10 @@ class _SuratTrayekState extends State<SuratTrayek>
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.green,
+        title: Text("Panduan"),
+        ),
         backgroundColor: Colors.green,
         resizeToAvoidBottomPadding: false,
         body: Column(
@@ -84,6 +88,29 @@ class _SuratTrayekState extends State<SuratTrayek>
                       children: <Widget>[
                         Center(
                           child: Text('Pendaftaran',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Montserrat')),
+                        )
+                      ],
+                    ))),
+            SizedBox(height: 20.0),
+            Container(
+                height: 40.0,
+                color: Colors.transparent,
+                child: Container(
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                            color: Colors.black,
+                            style: BorderStyle.solid,
+                            width: 3.0),
+                        color: Colors.transparent,
+                        borderRadius: BorderRadius.circular(10.0)),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Center(
+                          child: Text('Pendaftaran Perpanjangan Surat Trayek',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontFamily: 'Montserrat')),
