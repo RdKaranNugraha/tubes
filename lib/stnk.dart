@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tubes/home.dart';
+import 'package:tubes/pendaftaranstnk.dart';
 import 'panduan.dart' as panduan;
 import 'pendaftaran.dart' as pendaftaran;
 import 'infopajak.dart' as infopajak;
@@ -106,7 +107,7 @@ class _STNKState extends State<STNK> with SingleTickerProviderStateMixin {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => panduan.Panduan()));
+                                    builder: (context) => PendaftaranSTNK()));
                           },
                         )
                         )
