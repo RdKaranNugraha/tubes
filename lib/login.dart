@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tubes/home.dart';
+import 'package:tubes/loginemail.dart';
 import 'package:tubes/pendaftaran.dart';
+import 'package:flutter/cupertino.dart';
 
 class MyApp extends StatelessWidget {
   @override
@@ -144,14 +146,22 @@ class _LoginState extends State<Login> {
                               children: <Widget>[
                                 Center(
                                   child: ImageIcon(
-                                      AssetImage('assets/images/facebook.png')),
+                                      AssetImage('assets/images/google.png')),
                                 ),
                                 Center(
-                                  child: Text('LOGIN WITH FACEBOOK',
+                                    child: InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                LoginEmail()));
+                                  },
+                                  child: Text('LOGIN WITH GMAIL',
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontFamily: 'Montserrat')),
-                                )
+                                ))
                               ],
                             )))
                   ],
@@ -166,9 +176,8 @@ class _LoginState extends State<Login> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(context,  
-                    MaterialPageRoute(
-                    builder: (context) => Pendaftaran()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Pendaftaran()));
                   },
                   child: Text(
                     'Register',
