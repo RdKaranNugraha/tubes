@@ -132,16 +132,11 @@ class _PendaftaranSTNKState extends State<PendaftaranSTNK>
                           ])),
                       child: Center(
                         child: Text(
-                          "Login",
+                          "Daftar",
                           style: TextStyle(
                               color: Colors.white, fontWeight: FontWeight.bold),
                         ),
                       ),
-                    ),
-                    SizedBox(height: 70),
-                    Text(
-                      "Forgot Password?",
-                      style: TextStyle(color: Color.fromRGBO(143, 148, 251, 1)),
                     ),
                   ]))
             ],
