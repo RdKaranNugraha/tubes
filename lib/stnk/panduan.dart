@@ -1,20 +1,18 @@
 // import 'package:day12_login/Animation/FadeAnimation.dart';
 import 'package:flutter/material.dart';
-import 'package:tubes/stnk.dart';
 
-class PendaftaranSTNK extends StatefulWidget {
+class PanduanSTNK extends StatefulWidget {
   @override
-  _PendaftaranSTNKState createState() => _PendaftaranSTNKState();
+  _PanduanSTNKState createState() => _PanduanSTNKState();
 }
 
-class _PendaftaranSTNKState extends State<PendaftaranSTNK>
-    with SingleTickerProviderStateMixin {
+class _PanduanSTNKState extends State<PanduanSTNK> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.green,
-          title: Text("Pendaftaran"),
+          title: Text("Panduan"),
         ),
         backgroundColor: Colors.white,
         body: Container(
@@ -64,7 +62,7 @@ class _PendaftaranSTNKState extends State<PendaftaranSTNK>
                         margin: EdgeInsets.only(top: 50),
                         child: Center(
                           child: Text(
-                            "Perpanjangan STNK",
+                            "Panduan STNK",
                             style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 40,
@@ -90,54 +88,7 @@ class _PendaftaranSTNKState extends State<PendaftaranSTNK>
                                 blurRadius: 20.0,
                                 offset: Offset(0, 10))
                           ]),
-                      child: Column(
-                        children: <Widget>[
-                          Container(
-                            padding: EdgeInsets.all(8.0),
-                            decoration: BoxDecoration(
-                                border: Border(
-                                    bottom:
-                                        BorderSide(color: Colors.grey[100]))),
-                            child: TextField(
-                              decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: "NIK",
-                                  hintStyle:
-                                      TextStyle(color: Colors.grey[400])),
-                            ),
-                          ),
-                          Container(
-                            padding: EdgeInsets.all(8.0),
-                            child: TextField(
-                              decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: "No.Rangka(5 digit terakhir)",
-                                  hintStyle:
-                                      TextStyle(color: Colors.grey[400])),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 30,
-                    ),
-                    Container(
-                      height: 50,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          gradient: LinearGradient(colors: [
-                            Color.fromRGBO(143, 148, 251, 1),
-                            Color.fromRGBO(143, 148, 251, .6),
-                          ])),
-                      child: Center(
-                        child: Text(
-                          "Daftar",
-                          style: TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    ),
+                    )
                   ]))
             ],
           ),

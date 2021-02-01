@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthServices {
   static FirebaseAuth _auth = FirebaseAuth.instance;
-  static Future<FirebaseUser> signInAnonymous() async {
+  static Future signInAnonymous() async {
     try {
       AuthResult result = await _auth.signInAnonymously();
       FirebaseUser firebaseUser = result.user;
@@ -20,9 +20,9 @@ class AuthServices {
       AuthResult result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       FirebaseUser firebaseUser = result.user;
+      return firebaseUser;
     } catch (e) {
       print(e.toString());
-
       return null;
     }
   }
@@ -32,6 +32,7 @@ class AuthServices {
       AuthResult result = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
       FirebaseUser user = result.user;
+      return user;
     } catch (e) {
       print(e.toString());
       return null;

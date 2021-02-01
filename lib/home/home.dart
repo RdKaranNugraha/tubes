@@ -1,9 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:tubes/SuratTrayek.dart';
-import 'package:tubes/login.dart';
-import 'package:tubes/stnk.dart';
+import 'package:tubes/home/SuratTrayek.dart';
+import 'package:tubes/auth/auth_services.dart';
+import 'package:tubes/home/dataprofil.dart';
+import 'package:tubes/home/stnk.dart';
 
 class Home extends StatefulWidget {
+  final FirebaseUser user;
+  Home(this.user);
   @override
   _HomeState createState() => _HomeState();
 }
@@ -70,15 +74,40 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                         color: Colors.white,
                         fontSize: 40,
                         fontWeight: FontWeight.bold)),
-                SizedBox(height: 10),
-                Text("Rd Karan Nugraha",
-                    style: TextStyle(color: Colors.black, fontSize: 22)),
-                SizedBox(height: 10),
-                Text("NoTelepon",
-                    style: TextStyle(color: Colors.black, fontSize: 22)),
-                SizedBox(height: 10),
-                Text("089626156656",
-                    style: TextStyle(color: Colors.black, fontSize: 22)),
+                SizedBox(height: 20.0),
+                Container(
+                  height: 40.0,
+                  color: Colors.transparent,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                            color: Colors.transparent,
+                            style: BorderStyle.solid,
+                            width: 1.0),
+                        color: Colors.transparent,
+                        borderRadius: BorderRadius.circular(30.0)),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => DataProfil()));
+                      },
+                      child: Container(
+                        child: Text('Profil',
+                            style: TextStyle(
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Montserrat')),
+                      ),
+                    ),
+                  ),
+                ),
+                RaisedButton(
+                    child: Text("SignOut"),
+                    onPressed: () async {
+                      await AuthServices.signOut();
+                    })
               ],
             ),
           ),
@@ -231,34 +260,34 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                     child: new Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: <Widget>[
-                          RaisedButton(
-                              child: Text("Pembayaran",
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold)),
-                              color: Colors.white,
-                              elevation: 5,
-                              onPressed: () {
-                                Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Login()));
-                              }),
-                          RaisedButton(
-                              child: Text("Bukti Pembayaran",
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold)),
-                              color: Colors.white,
-                              elevation: 5,
-                              onPressed: () {
-                                Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Login()));
-                              }),
+                          // RaisedButton(
+                          //     child: Text("Pembayaran",
+                          //         style: TextStyle(
+                          //             color: Colors.black,
+                          //             fontSize: 20,
+                          //             fontWeight: FontWeight.bold)),
+                          //     color: Colors.white,
+                          //     elevation: 5,
+                          //     onPressed: () {
+                          //       Navigator.pushReplacement(
+                          //           context,
+                          //           MaterialPageRoute(
+                          //               builder: (context) => Pembayaran()));
+                          //     }),
+                          // RaisedButton(
+                          //     child: Text("Bukti Pembayaran",
+                          //         style: TextStyle(
+                          //             color: Colors.black,
+                          //             fontSize: 20,
+                          //             fontWeight: FontWeight.bold)),
+                          //     color: Colors.white,
+                          //     elevation: 5,
+                          //     onPressed: () {
+                          //       Navigator.pushReplacement(
+                          //           context,
+                          //           MaterialPageRoute(
+                          //               builder: (context) => BuktiPembayaran()));
+                          //     }),
                         ]),
                   ),
                   // SizedBox(height: 50),
@@ -282,9 +311,9 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                       shrinkWrap: true,
                       itemBuilder: (context, index) {
                         return ListTile(
-                          title: Text("Motor/Mobil"),
-                          subtitle: Text("Garut-Bandung/Sebaliknya"),
-                          trailing: Text("-11.000"),
+                          title: Text("NoPolisi"),
+                          subtitle: Text("Jenis Kendaraan"),
+                          trailing: Text("Total"),
                         );
                       },
                       separatorBuilder: (context, index) {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'package:tubes/login.dart';
+import 'package:tubes/home/loginemail.dart';
 
 class SplashScreen extends StatefulWidget {
   _SplashScreen createState() => _SplashScreen();
@@ -17,7 +17,7 @@ class _SplashScreen extends State<SplashScreen> {
     return Timer(duration, () {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => Login()),
+        MaterialPageRoute(builder: (context) => LoginEmail()),
       );
     });
   }
