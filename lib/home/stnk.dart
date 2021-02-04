@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:tubes/stnk/infopajak.dart';
 import 'package:tubes/stnk/panduan.dart';
 import 'package:tubes/stnk/pendaftaranstnk.dart';
-
 
 class STNK extends StatefulWidget {
   @override
@@ -54,20 +54,18 @@ class _STNKState extends State<STNK> with SingleTickerProviderStateMixin {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Center(
-                            child: RaisedButton(
-                          child: Text('Panduan',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'Montserrat')),
-                          color: Colors.green,
-                          onPressed: () {
+                            child: InkWell(
+                          onTap: () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => PanduanSTNK()));
                           },
-                        )
-                        )
+                          child: Text('Panduan',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Montserrat')),
+                        ))
                       ],
                     ))),
             SizedBox(height: 20.0),
@@ -86,20 +84,18 @@ class _STNKState extends State<STNK> with SingleTickerProviderStateMixin {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Center(
-                          child: RaisedButton(
-                          child: Text('Pendaftaran Perpanjangan STNK',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'Montserrat')),
-                          color: Colors.green,
-                          onPressed: () {
+                            child: InkWell(
+                          onTap: () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => PendaftaranSTNK()));
                           },
-                        )
-                        )
+                          child: Text('Pendaftaran Perpanjangan STNK',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Montserrat')),
+                        ))
                       ],
                     ))),
             SizedBox(height: 20.0),
@@ -118,36 +114,20 @@ class _STNKState extends State<STNK> with SingleTickerProviderStateMixin {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Center(
-                          child: Text('Info Pajak',
+                            child: InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => InfoPajakSTNK()));
+                          },
+                          child: Text('Info & Pembayaran Pajak',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontFamily: 'Montserrat')),
-                        )
+                        ))
                       ],
                     ))),
-            SizedBox(height: 20.0),
-            Container(
-                height: 40.0,
-                color: Colors.transparent,
-                child: Container(
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                            color: Colors.black,
-                            style: BorderStyle.solid,
-                            width: 3.0),
-                        color: Colors.transparent,
-                        borderRadius: BorderRadius.circular(10.0)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Center(
-                          child: Text('Pembayaran Pajak',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'Montserrat')),
-                        )
-                      ],
-                    )))
           ],
         ));
   }

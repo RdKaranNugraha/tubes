@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tubes/database/firestore.dart';
 
 class PendaftaranSTNK extends StatefulWidget {
   @override
@@ -7,73 +8,24 @@ class PendaftaranSTNK extends StatefulWidget {
 
 class _PendaftaranSTNKState extends State<PendaftaranSTNK>
     with SingleTickerProviderStateMixin {
+  TextEditingController nomorpolisiController = TextEditingController(text: "");
+  TextEditingController nikController = TextEditingController(text: "");
+  TextEditingController nomorrangkaController = TextEditingController(text: "");
+  TextEditingController nohpController = TextEditingController(text: "");
+  TextEditingController emailstnkController = TextEditingController(text: "");
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
           backgroundColor: Colors.green,
-          title: Text("Pendaftaran"),
+          title: Text("Pendaftaran STNK"),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.green,
         body: Container(
-          child: Column(
+          child: ListView(
+            scrollDirection: Axis.vertical,
             children: <Widget>[
-              Container(
-                height: 200,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage('assets/images/background.jpg'),
-                        fit: BoxFit.fill)),
-                child: Stack(
-                  children: <Widget>[
-                    Positioned(
-                      left: 30,
-                      width: 80,
-                      height: 100,
-                      child: Container(
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage('assets/images/motor.png'))),
-                      ),
-                    ),
-                    Positioned(
-                      left: 150,
-                      width: 80,
-                      height: 320,
-                      child: Container(
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage('assets/images/bus.png'))),
-                      ),
-                    ),
-                    Positioned(
-                      right: 40,
-                      top: 40,
-                      width: 80,
-                      height: 100,
-                      child: Container(
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage('assets/images/jam.png'))),
-                      ),
-                    ),
-                    Positioned(
-                      child: Container(
-                        margin: EdgeInsets.only(top: 50),
-                        child: Center(
-                          child: Text(
-                            "Perpanjangan STNK",
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 40,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
               Padding(
                   padding: EdgeInsets.all(30.0),
                   child: Column(children: <Widget>[
@@ -97,9 +49,11 @@ class _PendaftaranSTNKState extends State<PendaftaranSTNK>
                                     bottom:
                                         BorderSide(color: Colors.grey[100]))),
                             child: TextField(
+                              controller: nomorpolisiController,
                               decoration: InputDecoration(
                                   border: InputBorder.none,
-                                  hintText: "NIK",
+                                  labelText: "Nomor Polisi",
+                                  hintText: "Masukkan Nomor Polisi",
                                   hintStyle:
                                       TextStyle(color: Colors.grey[400])),
                             ),
@@ -107,13 +61,52 @@ class _PendaftaranSTNKState extends State<PendaftaranSTNK>
                           Container(
                             padding: EdgeInsets.all(8.0),
                             child: TextField(
+                              controller: nikController,
                               decoration: InputDecoration(
                                   border: InputBorder.none,
-                                  hintText: "No.Rangka(5 digit terakhir)",
+                                  labelText: "Nomor Induk KTP (NIK)",
+                                  hintText: "Masukkan Nomor Induk KTP",
                                   hintStyle:
                                       TextStyle(color: Colors.grey[400])),
                             ),
-                          )
+                          ),
+                          Container(
+                            padding: EdgeInsets.all(8.0),
+                            child: TextField(
+                              controller: nomorrangkaController,
+                              decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  labelText: "No.Rangka(5 digit terakhir)",
+                                  hintText:
+                                      "Masukkan 5 digit terakhir no.rangka",
+                                  hintStyle:
+                                      TextStyle(color: Colors.grey[400])),
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.all(8.0),
+                            child: TextField(
+                              controller: nohpController,
+                              decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  labelText: "No.HP",
+                                  hintText: "Masukkan Nomor Handphone/Whatsapp",
+                                  hintStyle:
+                                      TextStyle(color: Colors.grey[400])),
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.all(8.0),
+                            child: TextField(
+                              controller: emailstnkController,
+                              decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  labelText: "E-mail",
+                                  hintText: "Masukkan Alamat Email",
+                                  hintStyle:
+                                      TextStyle(color: Colors.grey[400])),
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -122,17 +115,22 @@ class _PendaftaranSTNKState extends State<PendaftaranSTNK>
                     ),
                     Container(
                       height: 50,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          gradient: LinearGradient(colors: [
-                            Color.fromRGBO(143, 148, 251, 1),
-                            Color.fromRGBO(143, 148, 251, .6),
-                          ])),
                       child: Center(
-                        child: Text(
-                          "Daftar",
-                          style: TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.bold),
+                        child: Column(
+                          children: [
+                            RaisedButton(
+                              color: Colors.white,
+                                child: Text("Daftar"),
+                                onPressed: () {
+                                  FirestoreDatabase.createOrUpdatePajak(
+                                      "$nomorpolisiController",
+                                      nomorPolisi: "$nomorpolisiController",
+                                      nik: "$nikController",
+                                      norangka: "$nomorrangkaController",
+                                      nohp: "$nohpController",
+                                      emailstnk: "$emailstnkController");
+                                })
+                          ],
                         ),
                       ),
                     ),

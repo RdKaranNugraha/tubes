@@ -5,6 +5,12 @@ import 'package:tubes/auth/auth_services.dart';
 import 'package:tubes/home/dataprofil.dart';
 import 'package:tubes/home/stnk.dart';
 
+import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:tubes/database/firestore.dart';
+
 class Home extends StatefulWidget {
   final FirebaseUser user;
   Home(this.user);
@@ -13,6 +19,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
+  String imagePath;
+
   bool isCollapsed = true;
   double screenWidth, screenHeight;
   final Duration duration = const Duration(milliseconds: 300);
@@ -74,6 +82,38 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                         color: Colors.white,
                         fontSize: 40,
                         fontWeight: FontWeight.bold)),
+                Container(
+                  child: Center(
+                    child: Column(children: [
+                      (imagePath != null)
+                          ? Container(
+                              width: 100,
+                              height: 100,
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  border: Border.all(color: Colors.black)),
+                            )
+                          : Container(
+                              width: 100,
+                              height: 100,
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  border: Border.all(color: Colors.black))),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      RaisedButton(
+                          child: Text("Upload Gambar"),
+                          onPressed: () async {
+                            File file = await getImage();
+                            imagePath =
+                                await FirestoreDatabase.uploadImage(file);
+
+                            setState(() {});
+                          })
+                    ]),
+                  ),
+                ),
                 SizedBox(height: 20.0),
                 Container(
                   height: 40.0,
@@ -346,4 +386,8 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       ),
     );
   }
+}
+
+Future<File> getImage() async {
+  return await ImagePicker.pickImage(source: ImageSource.gallery);
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tubes/surattrayek/pendaftaranst.dart';
 
 class SuratTrayek extends StatefulWidget {
   @override
@@ -74,34 +75,18 @@ class _SuratTrayekState extends State<SuratTrayek>
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Center(
-                          child: Text('Pendaftaran',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'Montserrat')),
-                        )
-                      ],
-                    ))),
-            SizedBox(height: 20.0),
-            Container(
-                height: 40.0,
-                color: Colors.transparent,
-                child: Container(
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                            color: Colors.black,
-                            style: BorderStyle.solid,
-                            width: 3.0),
-                        color: Colors.transparent,
-                        borderRadius: BorderRadius.circular(10.0)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Center(
+                          child: InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => PendaftaranST()));
+                          },
                           child: Text('Pendaftaran Perpanjangan Surat Trayek',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontFamily: 'Montserrat')),
-                        )
+                        ))
                       ],
                     ))),
             SizedBox(height: 20.0),

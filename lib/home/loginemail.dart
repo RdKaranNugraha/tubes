@@ -7,6 +7,7 @@ class LoginEmail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
         backgroundColor: Colors.green,
         body: Center(
           child: Column(
@@ -38,7 +39,7 @@ class LoginEmail extends StatelessWidget {
                 ),
               ),
               Container(
-                width: 500,
+                width: 300,
                 height: 100,
                 child: TextField(
                   controller: emailController,
@@ -53,7 +54,7 @@ class LoginEmail extends StatelessWidget {
                 ),
               ),
               Container(
-                width: 500,
+                width: 300,
                 height: 100,
                 child: TextField(
                   controller: passwordController,
@@ -67,23 +68,37 @@ class LoginEmail extends StatelessWidget {
                           borderSide: BorderSide(color: Colors.white))),
                 ),
               ),
-              RaisedButton(
-                  child: Text("Demo"),
-                  onPressed: () async {
-                    await AuthServices.signInAnonymous();
-                  }),
-              RaisedButton(
-                  child: Text("Sig In"),
-                  onPressed: () async {
-                    await AuthServices.signIn(
-                        emailController.text, passwordController.text);
-                  }),
-              RaisedButton(
-                  child: Text("Sig Up"),
-                  onPressed: () async {
-                    await AuthServices.signUp(
-                        emailController.text, passwordController.text);
-                  }),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: 10,
+                  ),
+                  RaisedButton(
+                      child: Text("Demo"),
+                      onPressed: () async {
+                        await AuthServices.signInAnonymous();
+                      }),
+                  SizedBox(
+                    width: 30,
+                  ),
+                  RaisedButton(
+                      child: Text("Sig In"),
+                      onPressed: () async {
+                        await AuthServices.signIn(
+                            emailController.text, passwordController.text);
+                      }),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  RaisedButton(
+                      child: Text("Sig Up"),
+                      onPressed: () async {
+                        await AuthServices.signUp(
+                            emailController.text, passwordController.text);
+                      }),
+                ],
+              ),
             ],
           ),
         ));

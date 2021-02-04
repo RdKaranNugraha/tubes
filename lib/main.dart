@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tubes/auth/auth_services.dart';
@@ -11,7 +12,7 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return StreamProvider.value(
+    return StreamProvider<FirebaseUser>.value(
       value: AuthServices.firebaseUserStream,
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

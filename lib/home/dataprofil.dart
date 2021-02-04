@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:tubes/Database.dart';
+import 'package:tubes/database/firestore.dart';
 
 class DataProfil extends StatefulWidget {
   @override
@@ -29,7 +29,7 @@ class _DataProfilState extends State<DataProfil> {
                 //           await FirestoreDatabase.getPajak("1");
                 //       print(snapshot.data['nama']);
                 //       print(snapshot.data['harga']);
-                //     })
+                //     }),
                 SizedBox(height: 20.0),
                   Container(
                     height: 40.0,
